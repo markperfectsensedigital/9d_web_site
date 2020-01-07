@@ -9,3 +9,21 @@ div.header {
 #nonprofit {
     font-size: 0.9rem;
 }
+
+div.map {
+    height: 600px;
+    width: 80%;
+}
+
+col.demokey {
+    width:10%;
+}
+
+col.demodescription {
+    width:65%;
+}
+
+col.demoqty {
+    width:25%;
+}
+

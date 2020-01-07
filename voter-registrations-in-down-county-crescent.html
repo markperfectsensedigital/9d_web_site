@@ -1,35 +1,29 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en-US">
 
 <head>
+  <title>Nine Districts for MoCo</title>
   <meta charset="utf-8" />
-  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+  <link rel="stylesheet" href="css/page.css">
   <link rel="stylesheet" href="css/ol.css" type="text/css">
   <link rel="stylesheet" href="css/static.css" type="text/css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <style>
-    .map {
-      height: 600px;
-      width: 80%;
-    }
-  </style>
   <script src="data/ol.js"></script>
-  <title>Precincts in the Down County Crescent</title>
+  <script src="scripts.js"></script>
 </head>
 
-<body class="mx-5">
-  <h2>Precincts in the Down County Crescent</h2>
-  <p>The following map shows the precincts in the down-county crescent, and the table below the map shows the number of registered voters in each precinct. Representatives of only 30% of the voters have 78% of the voting rights on the County Council!</p>
-  <div>
+<body>
+  <div id="header"></div>
+  <div class="m-4">
+  <h2>Voter Registrations in Down-County Crescent</h2>
+  <p>The following map shows the precincts in the down-county crescent, and the table below the map shows the number of registered voters in each precinct. Representatives of only 31% of the voters have 78% of the voting rights on the County Council!</p>
     <div id="mapdiv" class="map mx-auto"></div>
     <table class="table mt-5">
-      <cols>
-        <col width="10%"/>
-        <col width="65%"/>
-        <col width="25%"/>
-      </cols>
+        <col class="demokey"/>
+        <col class="demodescription"/>
+        <col class="demoqty"/>
+
       <thead>
         <tr>
           <th>Precinct</th>
@@ -131,18 +125,18 @@
             <p><small>Sources:</small></p>
             <p><small>Precinct locations: "Election Precincts", Montgomery County Geographic Information Systems, available at <a href="https://data2018-mcgov-gis.opendata.arcgis.com/datasets/election-precincts">https://data2018-mcgov-gis.opendata.arcgis.com/datasets/election-precincts</a>.</small></p>
             <p><small>Voter counts: "Active Registered Voters October 2019," Montgomery County Board of Elections.</small></p>
-            <p><small>Find an error? <a href="mailto:tninedistrict@gmail.com?subject=Down%20County Crescent%20Voter%20Map">Tell us!</a></small></p>
+            <p><small>Find an error? <a href="mailto:tninedistrict@gmail.com?subject=Down%20County%20Crescent%20Voter%20Map">Tell us!</a></small></p>
           </td>
         </tr>
       </tfoot>
     </table>
-  </div>
-  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/proj4js/1.1.0/proj4js-compressed.min.js"></script>
+</div> <!-- class="m-4"-->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/proj4js/1.1.0/proj4js-compressed.min.js"></script>
   <script src="ol/proj4.js"></script>
-  <!--script src="down-county-crescent-osm.js"></script-->
-  <script src="down-county-crescent-precincts.js"></script>
-
-
+  <script src="resources/down-county-crescent-precincts.js"></script>
+  <script>
+    insertHeader();
+  </script>
 </body>
 
 </html>
