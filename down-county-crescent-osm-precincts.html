@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="css/ol.css" type="text/css">
+  <link rel="stylesheet" href="css/static.css" type="text/css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <style>
+    .map {
+      height: 600px;
+      width: 80%;
+    }
+  </style>
+  <script src="data/ol.js"></script>
+  <title>Precincts in the Down County Crescent</title>
+</head>
+
+<body class="mx-5">
+  <h2>Precincts in the Down County Crescent</h2>
+  <p>The following map shows the precincts in the down-county crescent, and the table below the map shows the number of registered voters in each precinct. Representatives of only 30% of the voters have 78% of the voting rights on the County Council!</p>
+  <div>
+    <div id="mapdiv" class="map mx-auto"></div>
+    <table class="table mt-5">
+      <cols>
+        <col width="10%"/>
+        <col width="65%"/>
+        <col width="25%"/>
+      </cols>
+      <thead>
+        <tr>
+          <th>Precinct</th>
+          <th>Address</th>
+          <th class="text-right">Number registered voters</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>10003</td><td>SEVEN LOCKS ELEMENTARY SCHOOL 9500 Seven Locks Rd Bethesda MD 20817</td><td class="text-right">2,449</td></tr>
+        <tr><td>10007</td><td>CARDEROCK SPRINGS ELEMENTARY SCHOOL 7401 Persimmon Tree Ln Bethesda MD 20817</td><td class="text-right">2,888</td></tr>
+        <tr><td>10011</td><td>PAULINE BETZ ADDIE TENNIS CENTER 7801 Democracy Blvd Bethesda MD 20817</td><td class="text-right">1,959</td></tr>
+        <tr><td>13003</td><td>TEMPLE EMANUEL 10101 Connecticut Ave Kensington MD 20895</td><td class="text-right">2,354</td></tr>
+        <tr><td>13004</td><td>TAKOMA PARK ELEMENTARY SCHOOL 7511 Holly Ave Takoma Park MD 20912</td><td class="text-right">3,387</td></tr>
+        <tr><td>13005</td><td>SILVER SPRING LIBRARY 900 Wayne Ave Silver Spring MD 20910</td><td class="text-right">3,970</td></tr>
+        <tr><td>13006</td><td>PINEY BRANCH ELEMENTARY SCHOOL 7510 Maple Ave Takoma Park MD 20912</td><td class="text-right">2,563</td></tr>
+        <tr><td>13007</td><td>WOODLIN ELEMENTARY SCHOOL 2101 Luzerne Ave Silver Spring MD 20910</td><td class="text-right">2,571</td></tr>
+        <tr><td>13008</td><td>EAST SILVER SPRING ELEMENTARY SCHOOL 631 Silver Spring Ave Silver Spring MD 20910</td><td class="text-right">2,507</td></tr>
+        <tr><td>13010</td><td>M-NCPPC AUDITORIUM 8787 Georgia Ave Silver Spring MD 20910</td><td class="text-right">1,975</td></tr>
+        <tr><td>13013</td><td>HIGHLAND VIEW ELEMENTARY SCHOOL 9010 Providence Ave Silver Spring MD 20901</td><td class="text-right">2,887</td></tr>
+        <tr><td>13014</td><td>ST. LUKE LUTHERAN CHURCH 9100 Colesville Rd Silver Spring MD 20910</td><td class="text-right">2,886</td></tr>
+        <tr><td>13015</td><td>EASTERN MIDDLE SCHOOL 300 University Blvd E Silver Spring MD 20901</td><td class="text-right">4,418</td></tr>
+        <tr><td>13016</td><td>ROSEMARY HILLS ELEMENTARY SCHOOL 2111 Porter Rd Silver Spring MD 20910</td><td class="text-right">2,300</td></tr>
+        <tr><td>13018</td><td>OAK VIEW ELEMENTARY SCHOOL 400 E Wayne Ave Silver Spring MD 20901</td><td class="text-right">2,283</td></tr>
+        <tr><td>13021</td><td>TAKOMA PARK MIDDLE SCHOOL 7611 Piney Branch Rd Silver Spring MD 20910</td><td class="text-right">3,774</td></tr>
+        <tr><td>13022</td><td>ROLLING TERRACE ELEMENTARY SCHOOL 705 Bayfield St Takoma Park MD 20912</td><td class="text-right">3,124</td></tr>
+        <tr><td>13023</td><td>PINE CREST ELEMENTARY SCHOOL 201 Woodmoor Dr Silver Spring MD 20901</td><td class="text-right">2,730</td></tr>
+        <tr><td>13024</td><td>HOLY CROSS RESOURCE INSTITUTE 9805 Dameron Dr Silver Spring MD 20902</td><td class="text-right">2,292</td></tr>
+        <tr><td>13025</td><td>VIERS MILL ELEMENTARY SCHOOL 11711 Joseph Mill Rd Silver Spring MD 20906</td><td class="text-right">3,431</td></tr>
+        <tr><td>13027</td><td>ALBERT EINSTEIN HIGH SCHOOL 11135 Newport Mill Rd Kensington MD 20895</td><td class="text-right">2,808</td></tr>
+        <tr><td>13030</td><td>HOLIDAY PARK SENIOR CENTER 3950 Ferrara Dr Wheaton MD 20906</td><td class="text-right">2,885</td></tr>
+        <tr><td>13031</td><td>OAKLAND TERRACE ELEMENTARY SCHOOL 2720 Plyers Mill Rd Silver Spring MD 20902</td><td class="text-right">1,756</td></tr>
+        <tr><td>13032</td><td>GLEN HAVEN ELEMENTARY SCHOOL 10900 Inwood Ave Silver Spring MD 20902</td><td class="text-right">3,615</td></tr>
+        <tr><td>13034</td><td>KENSINGTON TOWN HALL 3710 Mitchell St Kensington MD 20895</td><td class="text-right">2,284</td></tr>
+        <tr><td>13038</td><td>CEDAR LANE CHURCH 9601 Cedar Ln Bethesda MD 20814</td><td class="text-right">4,471</td></tr>
+        <tr><td>13039</td><td>ROCK CREEK FOREST ELEMENTARY SCHOOL 8330 Grubb Rd Chevy Chase MD 20815</td><td class="text-right">2,278</td></tr>
+        <tr><td>13040</td><td>ROCK VIEW ELEMENTARY SCHOOL 3901 Denfeld Ave Kensington MD 20895</td><td class="text-right">2,298</td></tr>
+        <tr><td>13044</td><td>ARCOLA ELEMENTARY SCHOOL 1820 Franwall Ave Silver Spring MD 20902</td><td class="text-right">3,306</td></tr>
+        <tr><td>13047</td><td>MONTGOMERY COLLEGE CULTURAL ARTS CENTER 7995 Georgia Ave Silver Spring MD 20910</td><td class="text-right">4,107</td></tr>
+        <tr><td>13050</td><td>SLIGO CREEK ELEMENTARY SCHOOL 500 Schuyler Rd Silver Spring MD 20910</td><td class="text-right">2,235</td></tr>
+        <tr><td>13053</td><td>SLIGO MIDDLE SCHOOL 1401 Dennis Ave Silver Spring MD 20902</td><td class="text-right">1,741</td></tr>
+        <tr><td>13057</td><td>ARCOLA TOWERS 1135 University Blvd W Silver Spring MD 20902</td><td class="text-right">1,119</td></tr>
+        <tr><td>13058</td><td>FLORA M. SINGER ELEMENTARY SCHOOL 2600 Hayden Dr Silver Spring MD 20902</td><td class="text-right">3,785</td></tr>
+        <tr><td>13059</td><td>STEPHEN KNOLLS SCHOOL 10731 St Margarets Way Kensington MD 20895</td><td class="text-right">1,797</td></tr>
+        <tr><td>13065</td><td>GWENDOLYN E. COFFIELD COMMUNITY RECREATION CENTER 2450 Lyttonsville Rd Silver Spring MD 20910</td><td class="text-right">1,690</td></tr>
+        <tr><td>13067</td><td>DON BOSCO CRISTO REY HIGH SCHOOL 1010 Larch Ave Takoma Park MD 20912</td><td class="text-right">1,675</td></tr>
+        <tr><td>13068</td><td>TAKOMA PARK RECREATION CENTER 7315 New Hampshire Ave Takoma Park MD 20912</td><td class="text-right">2,136</td></tr>
+        <tr><td>4004</td><td>PARKSIDE CLUBHOUSE NORTH 10522 Montrose Ave Bethesda MD 20814</td><td class="text-right">2,089</td></tr>
+        <tr><td>4008</td><td>GARRETT PARK ELEMENTARY SCHOOL 4810 Oxford St Kensington MD 20896</td><td class="text-right">4,241</td></tr>
+        <tr><td>4010</td><td>Tilden Middle School/Cafeteria 11211 Old Georgetown Rd Rockville MD 20852</td><td class="text-right">2,645</td></tr>
+        <tr><td>4013</td><td>FARMLAND ELEMENTARY SCHOOL 7000 Old Gate Rd Rockville MD 20852</td><td class="text-right">2,235</td></tr>
+        <tr><td>4015</td><td>ROCKING HORSE ROAD CENTER 4910 Macon Rd Rockville MD 20852</td><td class="text-right">1,551</td></tr>
+        <tr><td>4017</td><td>KENNEDY SHRIVER AQUATIC CENTER 5900 Executive Blvd Rockville MD 20852</td><td class="text-right">3,072</td></tr>
+        <tr><td>4018</td><td>Tilden Middle School/Gym11211 Old Georgetown Rd Rockville MD 20852</td><td class="text-right">3,148</td></tr>
+        <tr><td>4026</td><td>ROCKING HORSE ROAD CENTER 4910 Macon Rd Rockville MD 20852</td><td class="text-right">2,096</td></tr>
+        <tr><td>4028</td><td>BENDER JEWISH COMMUNITY CENTER 6125 Montrose Rd Rockville MD 20852</td><td class="text-right">1,265</td></tr>
+        <tr><td>4031</td><td>WALTER JOHNSON HIGH SCHOOL 6400 Rock Spring Dr Bethesda MD 20814</td><td class="text-right">2,850</td></tr>
+        <tr><td>4033</td><td>GARRETT PARK ELEMENTARY SCHOOL 4810 Oxford St Kensington MD 20896</td><td class="text-right">409</td></tr>
+        <tr><td>4040</td><td>ROCKING HORSE ROAD CENTER 4910 Macon Rd Rockville MD 20852</td><td class="text-right">143</td></tr>
+        <tr><td>5014</td><td>JOANN LELECK ELEMENTARY SCHOOL AT BROAD ACRES 710 Beacon Rd Silver Spring MD 20903</td><td class="text-right">1,872</td></tr>
+        <tr><td>7001</td><td>BETHESDA-CHEVY CHASE HIGH SCHOOL 4301 East West Hwy Bethesda MD 20814</td><td class="text-right">1,681</td></tr>
+        <tr><td>7002</td><td>CHEVY CHASE VILLAGE HALL 5906 Connecticut Ave Chevy Chase MD 20815</td><td class="text-right">2,204</td></tr>
+        <tr><td>7003</td><td>CLARA BARTON COMMUNITY CENTER 7425 Mac Arthur Blvd Cabin John MD 20818</td><td class="text-right">3,096</td></tr>
+        <tr><td>7004</td><td>BETHESDA ELEMENTARY SCHOOL 7600 Arlington Rd Bethesda MD 20814</td><td class="text-right">4,553</td></tr>
+        <tr><td>7005</td><td>ROLLINGWOOD SCHOOL CENTER 3200 Woodbine St Chevy Chase MD 20815</td><td class="text-right">2,275</td></tr>
+        <tr><td>7006</td><td>CHEVY CHASE ELEMENTARY SCHOOL 4015 Rosemary St Chevy Chase MD 20815</td><td class="text-right">2,512</td></tr>
+        <tr><td>7007</td><td>WESTBROOK ELEMENTARY SCHOOL 5110 Allan Ter Bethesda MD 20816</td><td class="text-right">2,058</td></tr>
+        <tr><td>7008</td><td>BETHESDA-CHEVY CHASE HIGH SCHOOL 4301 East West Hwy Bethesda MD 20814</td><td class="text-right">3,670</td></tr>
+        <tr><td>7009</td><td>LYNBROOK SCHOOL CENTER 8001 Lynbrook Dr Bethesda MD 20814</td><td class="text-right">2,600</td></tr>
+        <tr><td>7010</td><td>ST. JANE FRANCES DE CHANTAL CATHOLIC CHURCH 9601 Old Georgetown Rd Bethesda MD 20814</td><td class="text-right">3,039</td></tr>
+        <tr><td>7011</td><td>SOMERSET ELEMENTARY SCHOOL 5811 Warwick Pl Chevy Chase MD 20815</td><td class="text-right">3,301</td></tr>
+        <tr><td>7012</td><td>BETHESDA LIBRARY 7400 Arlington Rd Bethesda MD 20814</td><td class="text-right">2,883</td></tr>
+        <tr><td>7013</td><td>WESTLAND MIDDLE SCHOOL 5511 Massachusetts Ave Bethesda MD 20816</td><td class="text-right">3,240</td></tr>
+        <tr><td>7015</td><td>THOMAS W. PYLE MIDDLE SCHOOL 6311 Wilson Ln Bethesda MD 20817</td><td class="text-right">3,715</td></tr>
+        <tr><td>7016</td><td>NORTH CHEVY CHASE ELEMENTARY SCHOOL 3700 Jones Bridge Rd Chevy Chase MD 20815</td><td class="text-right">2,100</td></tr>
+        <tr><td>7018</td><td>WASHINGTON WALDORF SCHOOL 4800 Sangamore Rd Bethesda MD 20816</td><td class="text-right">2,686</td></tr>
+        <tr><td>7019</td><td>WYNGATE ELEMENTARY SCHOOL 9300 Wadsworth Dr Bethesda MD 20817</td><td class="text-right">4,239</td></tr>
+        <tr><td>7020</td><td>DAVIS LIBRARY 6400 Democracy Blvd Bethesda MD 20817</td><td class="text-right">2,400</td></tr>
+        <tr><td>7021</td><td>CHEVY CHASE UNITED METHODIST CHURCH 7001 Connecticut Ave Chevy Chase MD 20815</td><td class="text-right">1,283</td></tr>
+        <tr><td>7022</td><td>BANNOCKBURN ELEMENTARY SCHOOL 6520 Dalroy Ln Bethesda MD 20817</td><td class="text-right">2,309</td></tr>
+        <tr><td>7023</td><td>WALT WHITMAN HIGH SCHOOL 7100 Whittier Blvd Bethesda MD 20817</td><td class="text-right">4,265</td></tr>
+        <tr><td>7024</td><td>LITTLE FLOWER SCHOOL HALL 5601 Massachusetts Ave Bethesda MD 20816</td><td class="text-right">2,606</td></tr>
+        <tr><td>7025</td><td>GROSVENOR SCHOOL CENTER 5701 Grosvenor Ln Bethesda MD 20814</td><td class="text-right">2,616</td></tr>
+        <tr><td>7026</td><td>FRIENDSHIP HEIGHTS VILLAGE CENTER 4433 S Park Ave Chevy Chase MD 20815</td><td class="text-right">3,718</td></tr>
+        <tr><td>7027</td><td>ST. DUNSTAN'S EPISCOPAL CHURCH 5450 Massachusetts Ave Bethesda MD 20816</td><td class="text-right">1,815</td></tr>
+        <tr><td>7028</td><td>BRADLEY HILLS ELEMENTARY SCHOOL 8701 Hartsdale Ave Bethesda MD 20817</td><td class="text-right">1,951</td></tr>
+        <tr><td>7031</td><td>THE PROMENADE PARTY ROOM 5225 Pooks Hill Rd Bethesda MD 20814</td><td class="text-right">990</td></tr>
+        <tr><td>7032</td><td>CHEVY CHASE LIBRARY 8005 Connecticut Ave Chevy Chase MD 20815</td><td class="text-right">1,474</td></tr>
+        <tr><td colspan="2"><b>Total voters in down-county crescent:</b></td><td class="text-right">205,629
+        </td></tr> 
+        <tr><td colspan="2"><b>Total voters in Montgomery County:</b></td><td class="text-right">665,251</td></tr> 
+        <tr>
+            <td colspan="2"><b>Total down-county-crescent voters as a percentage of all voters in Montgomery County:</b></td>
+            <td class="text-right">31%</td>
+          </tr>
+        </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">
+            <p><small>Sources:</small></p>
+            <p><small>Precinct locations: "Election Precincts", Montgomery County Geographic Information Systems, available at <a href="https://data2018-mcgov-gis.opendata.arcgis.com/datasets/election-precincts">https://data2018-mcgov-gis.opendata.arcgis.com/datasets/election-precincts</a>.</small></p>
+            <p><small>Voter counts: "Active Registered Voters October 2019," Montgomery County Board of Elections.</small></p>
+            <p><small>Find an error? <a href="mailto:tninedistrict@gmail.com?subject=Down%20County Crescent%20Voter%20Map">Tell us!</a></small></p>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/proj4js/1.1.0/proj4js-compressed.min.js"></script>
+  <script src="ol/proj4.js"></script>
+  <!--script src="down-county-crescent-osm.js"></script-->
+  <script src="down-county-crescent-precincts.js"></script>
+
+
+</body>
+
+</html>

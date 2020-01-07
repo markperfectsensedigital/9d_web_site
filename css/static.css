@@ -1,0 +1,12 @@
+img.legend {
+    width: 5%; /* you can use % */
+    height: auto;
+}
+
+
+table#legend {
+    width: 50%;
+
+    margin-left: auto;
+    margin-right: auto;
+}
