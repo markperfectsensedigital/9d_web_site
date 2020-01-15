@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <title>Nine Districts for MoCo</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="css/page.css">
+  <link rel="stylesheet" href="css/ol.css" type="text/css">
+  <link rel="stylesheet" href="css/static.css" type="text/css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="data/ol.js"></script>
+  <script src="scripts.js"></script>
+</head>
+
+<body>
+  <div id="header"></div>
+  <div class="m-4">
+  <h2>Census Counts</h2>
+  <p>The following map shows the precincts in the down-county crescent, and the table below the map shows the number of registered voters in each precinct. Representatives of only 31% of the voters have 78% of the voting rights on the County Council!</p>
+    <div id="mapdiv" class="map mx-auto"></div>
+    <table class="table mt-5">
+        <col class="demokey"/>
+        <col class="demodescription"/>
+        <col class="demoqty"/>
+
+      <thead>
+        <tr>
+          <th>Precinct</th>
+          <th>Address</th>
+          <th class="text-right">Number registered voters</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>7032</td><td>CHEVY CHASE LIBRARY 8005 Connecticut Ave Chevy Chase MD 20815</td><td class="text-right">1,474</td></tr>
+        <tr><td colspan="2"><b>Total voters in down-county crescent:</b></td><td class="text-right">205,629
+        </td></tr> 
+        <tr><td colspan="2"><b>Total voters in Montgomery County:</b></td><td class="text-right">665,251</td></tr> 
+        <tr>
+            <td colspan="2"><b>Total down-county-crescent voters as a percentage of all voters in Montgomery County:</b></td>
+            <td class="text-right">31%</td>
+          </tr>
+        </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">
+            <p><small>Sources:</small></p>
+            <p><small>Precinct locations: "Election Precincts", Montgomery County Geographic Information Systems, available at <a href="https://data2018-mcgov-gis.opendata.arcgis.com/datasets/election-precincts">https://data2018-mcgov-gis.opendata.arcgis.com/datasets/election-precincts</a>.</small></p>
+            <p><small>Voter counts: "Active Registered Voters October 2019," Montgomery County Board of Elections.</small></p>
+            <p><small>Find an error? <a href="mailto:tninedistricts@gmail.com?subject=Down%20County%20Crescent%20Voter%20Map">Tell us!</a></small></p>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+</div> <!-- class="m-4"-->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/proj4js/1.1.0/proj4js-compressed.min.js"></script>
+  <script src="ol/proj4.js"></script>
+  <script src="resources/census-counts.js"></script>
+  <script>
+    insertHeader();
+  </script>
+</body>
+
+</html>
