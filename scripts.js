@@ -32,6 +32,23 @@ function insertHeader() {
 '    </div> <!-- class="container" -->' +
 '  </div> <!-- class="header" -->';
 
+
+var footerHtml =  '<div class="container">' + 
+'  <div class="row">' +
+'      <div class="col-sm text-center">' +
+'          By authority Nine Districts for MoCo; Mark Lautman, Treasurer'+
+'      </div>' +
+'      <div class="col-sm  text-center">' +
+'          <img src="images/facebook-icon.png" alt="facebook icon"><a href="https://www.facebook.com/pg/ninedistrictsformoco/posts/">Nine Districts For Moco</a>'+
+'      </div>' +
+'   </div>' +
+'</div>';
+
+
+
 var headerNode = document.getElementById('header');
 headerNode.innerHTML = headerHtml;
+var footerNode = document.getElementById('footer');
+footerNode.innerHTML = footerHtml;
 }
+

@@ -13,7 +13,10 @@ html { font-size: 3rem; }
     html { font-size: 1.25rem; }
 }
 
-
+footer {
+    background-color: #ffb832;
+    font-size: 65%;
+}
 
 div.header {
     background-color: #ffb832;
