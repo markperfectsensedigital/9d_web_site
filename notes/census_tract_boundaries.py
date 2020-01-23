@@ -20,7 +20,6 @@ outfile = open("/tmp/census.js", "w")
 
 mocoCensusBlocks = []
 for i in range(number_records):
-    rec = shapes.record(i)
     print("Printing record " + str(i))
     censusBlock = []
     s = shapes.shape(i)
