@@ -61,14 +61,14 @@ var censusTractsFeature = new ol.Feature({
   var censusTractsLayer = new ol.layer.Vector({
     source: censusTractsSource,
     style: censusTractsStyle,
-    name: 'downCountyCrescentLayer'
+    name: 'censusTractsLayer'
   });
   
 var arrayMarkers = [
   new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([39.626666, -76.101478])), label: "031201"})
   ] 
 
-  var censusTractStyle = new ol.style.Style({
+  var censusLabelStyle = new ol.style.Style({
     image: new ol.style.Icon({
       anchor: [0.5, 0.0],
       anchorOrigin: "bottom-left",
@@ -85,9 +85,9 @@ var arrayMarkers = [
   });
 
 
-  var censusTractLayer = new ol.layer.Vector({
-    source: censusTractSource,
-    style: censusTractStyle,
+  var censusTractsLayer = new ol.layer.Vector({
+    source: censusTractsSource,
+    style: censusTractsStyle,
     name: 'censusTractLayer'
   });
 
@@ -127,7 +127,7 @@ var arrayMarkers = [
 
 map.addLayer(countyBoundaryLayer);
 map.addLayer(censusTractsLayer);
-map.addLayer(censusTractLayer);
+//map.addLayer(censusTractLayer);
 
 
 var currZoom = map.getView().getZoom();
