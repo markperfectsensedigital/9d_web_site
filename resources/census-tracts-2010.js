@@ -289,29 +289,14 @@ new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-77.159839, 39.0
 
   ] 
 
-
-  var censusLabelsStyle = new ol.style.Style({
-    image: new ol.style.Icon({
-      anchor: [0.5, 0.0],
-      anchorOrigin: "bottom-left",
-      anchorXUnits: 'fraction',
-      anchorYUnits: 'fraction',
-      scale: 0.05,
-      src: 'data/atlarge.png'
-    })
-});
-
-
   var censusLabelsSource = new ol.source.Vector({
     features: arrayLabels
   });
 
   var censusLabelsLayer = new ol.layer.Vector({
     source: censusLabelsSource,
-    style: censusLabelsStyle,
     name: 'censusLabelLayer'
   });
-
 
   function styleFunction(feature) {
     return [
@@ -331,16 +316,8 @@ new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-77.159839, 39.0
           }),
           // get the text from the feature - `this` is ol.Feature
           // and show only under certain resolution
-          //text: map.getView().getZoom() > 12 ? 'Precinct ' : ''
-          text: feature.values_.label
-        }),
-        image: new ol.style.Icon({
-          anchor: [0.5, 0.0],
-          anchorOrigin: "bottom-left",
-          anchorXUnits: 'fraction',
-          anchorYUnits: 'fraction',
-          scale: 0.05,
-          src: 'data/atlarge.png'
+          text: map.getView().getZoom() > 12 ? feature.values_.label : ''
+          //text: feature.values_.label
         })
       })
     ];
@@ -363,7 +340,7 @@ map.on('moveend', function(e) {
 /* Assign the style function to each marker. This displays the marker's
    precinct label. */
 map.getLayers().forEach(function(element,index,array) {
-  if (element.get('name') == 'precinctLayer') {
+  if (element.get('name') == 'censusLabelLayer') {
     featureArray = element.getSource().getFeatures();
     featureArray.forEach(function(feature) {
       feature.setStyle(styleFunction)
