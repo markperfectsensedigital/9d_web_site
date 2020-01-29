@@ -7,7 +7,7 @@ censusTractLabels = []
 file = open(sys.argv[1], "r") 
 for line in file: 
     record = line.split(",")
-    record = ("new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([%s, %s])), label: \"%s\"})" % (float(record[4]),float(record[5]),record[2]))
+    record = ("new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([%s, %s])), label: \"%s\"})" % (float(record[5]),float(record[4]),record[2]))
     censusTractLabels.append(record)
 # new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-77.10960672175668, 38.95773816111915])), label: "Precinct 7027"})
 
