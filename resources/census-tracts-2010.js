@@ -64,11 +64,12 @@ var censusTractsFeature = new ol.Feature({
     name: 'censusTractsLayer'
   });
   
-var arrayMarkers = [
-  new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([39.626666, -76.101478])), label: "031201"})
+var arrayLabels = [
+  new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-77.416810, 39.145152,])), label: "031201"})
   ] 
 
-  var censusLabelStyle = new ol.style.Style({
+
+  var censusLabelsStyle = new ol.style.Style({
     image: new ol.style.Icon({
       anchor: [0.5, 0.0],
       anchorOrigin: "bottom-left",
@@ -80,16 +81,16 @@ var arrayMarkers = [
 });
 
 
-  var censusLabelSource = new ol.source.Vector({
-    features: arrayMarkers
+  var censusLabelsSource = new ol.source.Vector({
+    features: arrayLabels
   });
 
-
-  var censusTractsLayer = new ol.layer.Vector({
-    source: censusTractsSource,
-    style: censusTractsStyle,
-    name: 'censusTractLayer'
+  var censusLabelsLayer = new ol.layer.Vector({
+    source: censusLabelsSource,
+    style: censusLabelsStyle,
+    name: 'censusLabelLayer'
   });
+
 
   function styleFunction(feature) {
     return [
@@ -127,7 +128,7 @@ var arrayMarkers = [
 
 map.addLayer(countyBoundaryLayer);
 map.addLayer(censusTractsLayer);
-//map.addLayer(censusTractLayer);
+map.addLayer(censusLabelsLayer);
 
 
 var currZoom = map.getView().getZoom();
