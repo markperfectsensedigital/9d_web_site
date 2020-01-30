@@ -341,9 +341,20 @@ map.on('moveend', function(e) {
    precinct label. */
 map.getLayers().forEach(function(element,index,array) {
   if (element.get('name') == 'censusLabelLayer') {
-    featureArray = element.getSource().getFeatures();
+    var featureArray = element.getSource().getFeatures();
     featureArray.forEach(function(feature) {
       feature.setStyle(styleFunction)
+    })
+  }
+  if (element.get('name') == 'censusTractsLayer') {
+    var featureArray = element.getSource().getFeatures();
+    featureArray.forEach(function(feature) {
+      console.log(feature)
+    //  feature.setStyle(new ol.style.Style({
+    //    fill: new ol.style.Fill({
+    //       color: 'rgba(255,255,0,0.4)'
+    //    })
+   // }))
     })
   }
 });
