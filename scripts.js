@@ -21,6 +21,9 @@ function insertHeader() {
 '              <a class="nav-link" href="resources.html">Resources</a>' +
 '            </li>' +
 '            <li class="nav-item">' +
+'              <a class="nav-link" href="sign-petition.html">Sign the Petition</a>' +
+'            </li>' +
+'            <li class="nav-item">' +
 '              <a class="nav-link" href="donate.html">Donate</a>' +
 '            </li>' +
 '            <li class="nav-item">' +
