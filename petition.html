@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <title>Nine Districts for MoCo</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/page.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <script src="scripts.js"></script>
+  <script src="resources/petition.js"></script>
+</head>
+
+<body>
+  <div id="header"></div>
+  <div class="m-4">
+    <h2>Sign the petition</h2>
+    <p>Use this form to look sign the petition using your voter registration.</p>
+    <table>
+      <tbody>
+        <tr>
+          <td>Last name</td>
+          <td>First name</td>
+          <td>House number</td>
+          <td>City</td>
+        </tr>
+        <tr>
+          <td><input type="text" id="lastname" name="lastname" /></td>
+          <td><input type="text" id="firstname" name="firstname" /></td>
+          <td><input type="text" id="housenumber" name="housenumber" /></td>
+          <td><input type="text" id="city" name="city" /></td>
+        </tr>
+      </tbody>
+    </table>
+    <form>
+
+    </form>
+    <form>
+      <div id="retrieval">
+
+        <table id="results_table" class="table">
+          <thead>
+            <tr>
+              <td colspan="4">
+                <input type="checkbox" />
+              </td>
+            </tr>
+            <tr>
+              <td>Print<br /></td>
+              <td>First, Middle, Last Name</td>
+              <td>Address</td>
+              <td>Date of birth</td>
+            </tr>
+          </thead>
+          <tbody id="retrieved_records">
+
+        </tbody>        </table>
+      </div>
+    </form>
+  </div> <!-- class="m-4" -->
+  <footer id="footer" class="page-footer py-2 container-fluid"></footer>
+  <script>insertHeader();</script>
+  <script>assignEvents();</script>
+</body>
+
+</html>
