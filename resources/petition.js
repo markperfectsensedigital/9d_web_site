@@ -1,5 +1,4 @@
 function assignEvents() {
-    alert('All ready')
     var fields = [
         document.getElementById('lastname'),
         document.getElementById('firstname'),
@@ -16,12 +15,9 @@ function assignEvents() {
     }
 }
 
-
-
 function newlookup(e) {
     e = e || window.event;
     if ((e.keyCode >= 48) && (e.keyCode <= 90)) {
-        alert(e.key)
         var fields = [
             document.getElementById('lastname'),
             document.getElementById('firstname'),
@@ -33,6 +29,7 @@ function newlookup(e) {
             pairs[i]=fields[i].id + '=' + fields[i].value
         }
         var parameters = pairs.join('&')
+  
 
 
        var xhttp = new XMLHttpRequest()
@@ -44,7 +41,51 @@ function newlookup(e) {
             }
         };
         xhttp.open("POST", "cgi-bin/record_lookup.php", true);
-        xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoder")
+       xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
         xhttp.send(parameters);
        }
+}
+
+function printforms(e) {
+    var paramIndex = 0;
+    e = e || window.event
+    var vidBoxes = document.getElementsByTagName('input')
+    var pairs = []
+    for (i = 0; i < vidBoxes.length; i++) {
+        if (vidBoxes[i].id.startsWith('vid') && vidBoxes[i].checked) {
+            pairs[paramIndex]=vidBoxes[i].id + '=' + vidBoxes[i].value
+            paramIndex++
+        }
+    }
+    var parameters = pairs.join('&')
+    alert(parameters)
+    var xhttp = new XMLHttpRequest()
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4) {
+            if (this.status == 200) {
+                alert(this.responseText)
+            }
+        }
+    };
+    xhttp.open("POST", "cgi-bin/print_form.php", true);
+   xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+    xhttp.send(parameters);
+
+  /*  if ((e.keyCode >= 48) && (e.keyCode <= 90)) {
+        var fields = [
+            document.getElementById('lastname'),
+            document.getElementById('firstname'),
+            document.getElementById('housenumber'),
+            document.getElementById('city')
+        ]
+        var pairs = []
+        for (i = 0; i < fields.length; i++) {
+            pairs[i]=fields[i].id + '=' + fields[i].value
+        }
+        
+  
+
+
+       
+       } */
 }

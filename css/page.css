@@ -48,16 +48,24 @@ col.demoqty {
 }
 
 table#results_table td:nth-of-type(1) {
-    width: 10%;
+    width: 5%;
 }
 
 table#results_table td:nth-of-type(2) {
-    width: 35%;
+    width: 8%;
 }
 
 table#results_table td:nth-of-type(3) {
-    width: 35%;
+    width: 33%;
 }
+
 table#results_table td:nth-of-type(4) {
-    width: 20%;
+    width: 30%;
+}
+table#results_table td:nth-of-type(5) {
+    width: 11%;
+}
+
+table#results_table td:nth-of-type(6) {
+    width: 13%;
 }

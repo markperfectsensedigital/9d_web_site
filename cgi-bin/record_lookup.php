@@ -1,20 +1,69 @@
 <?php
 
-//echo("<p>First name: " . $_POST['firstname'] . "");
+/*error_log ( "HERE WE ARE" );
+foreach($_POST as $key => $value)
+{
+   error_log($key, $value);
+}
+error_log ( "ENDED POST" );*/
+$firstname =  $_POST['firstname'];
+$lastname =  $_POST['lastname'];
+$housenumber =  $_POST['housenumber'];
+$city = $_POST['city'];
 
-$response = <<<RESPONSE
-<tr>
-<td><input type="checkbox" /></td>
-<td>Mark Lautman</td>
-<td>11716 Magruder Ln., Rockville MD 20852</td>
-<td>02/20/1960</td>
-</tr>
-<tr>
+$mysqli = new mysqli('localhost', 'readonly', '1V3sXh#5PW', 'voter_registrations');
+if ($mysqli->connect_errno) {
+    echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+}
+
+$response = '';
+
+$query_string = "SELECT VID,LastName,MiddleName,FirstName,Suffix,HouseNumber,HouseSuffix,StreetPreDirection,StreetName,StreetType,StreetPostDirection,UnitType,UnitNumber,ResidentialCity, ResidentialZip,BirthYear FROM voter_registrations WHERE (LastName LIKE '$lastname%') AND (FirstName LIKE '$firstname%')  ORDER BY LastName,FirstName LIMIT 5";
+//error_log($query_string,0);
+$result = $mysqli->query($query_string);
+
+while($row = $result->fetch_array()) {
+    $rows[] = $row;
+}
+
+$row_number = 0;
+foreach($rows as $row) {
+
+    $full_name = $row['FirstName'] . ' ' . $row['MiddleName'] . ' ' . $row['LastName'] . ' ' . $row['Suffix'];
+    $full_address = $row['HouseNumber'] . ' ' . $row['HouseSuffix'] . ' ' . $row['StreetPreDirection'] . ' ' . $row['StreetName'] . ' ' . $row['StreetType'] . ' ' . $row['UnitType'] . ' ' . $row['UnitNumber'] . ' ' . $row['ResidentialCity'] . ' ' . $row['ResidentialZip'];
+    $voter_id = $row['VID'];
+
+    $response .= "<tr> <td><input type=\"checkbox\" id=\"vid_$row_number\" name=\"vid_$row_number\" value=\"$voter_id\"/></td>" . 
+    "<td><input type=\"radio\" id=\"vid_$row_number\" name=\"circulator\" value=\"$voter_id\"/></td><td>" . 
+    $full_name . 
+    '</td> <td>' . 
+    $full_address  .
+    '</td> <td>' . 
+    $row['BirthYear'] .
+    ' </td>' . 
+    '<td><input type="tel"/></td>' .
+    '</tr>';
+
+    $row_number++;
+}
+$response .= '<tr>
 <td colspan="4">
-  <input type="submit" />
-</td>
-</tr>
+ <button type="button" class="btn btn-warning"  onclick="printforms();">Submit</button>
 
-RESPONSE;
-echo($response)
+</td>
+</tr>';
+
+echo($response);
+
+$mysqli->close(); 
+
+
+
+
+
+
+
+
+
+
 ?>
