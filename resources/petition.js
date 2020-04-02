@@ -3,12 +3,8 @@ function assignEvents() {
         document.getElementById('lastname'),
         document.getElementById('firstname'),
         document.getElementById('housenumber'),
-        document.getElementById('city')
+        document.getElementById('birthyear')
     ]
-    /*   var lastname = document.getElementById('lastname')
-       var firstname = document.getElementById('firstname')
-       var housenumber = document.getElementById('housenumber')
-       var city = document.getElementById('city')*/
 
     for (i = 0; i < fields.length; i++) {
         fields[i].onkeyup = newlookup
@@ -17,12 +13,13 @@ function assignEvents() {
 
 function newlookup(e) {
     e = e || window.event;
-    if ((e.keyCode >= 48) && (e.keyCode <= 90)) {
+    if (((e.keyCode >= 48) && (e.keyCode <= 90)) || 
+    ((e.keyCode >= 96) && (e.keyCode <= 104))) {
         var fields = [
             document.getElementById('lastname'),
             document.getElementById('firstname'),
             document.getElementById('housenumber'),
-            document.getElementById('city')
+            document.getElementById('birthyear')
         ]
         var pairs = []
         for (i = 0; i < fields.length; i++) {
@@ -71,21 +68,4 @@ function printforms(e) {
    xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
     xhttp.send(parameters);
 
-  /*  if ((e.keyCode >= 48) && (e.keyCode <= 90)) {
-        var fields = [
-            document.getElementById('lastname'),
-            document.getElementById('firstname'),
-            document.getElementById('housenumber'),
-            document.getElementById('city')
-        ]
-        var pairs = []
-        for (i = 0; i < fields.length; i++) {
-            pairs[i]=fields[i].id + '=' + fields[i].value
-        }
-        
-  
-
-
-       
-       } */
 }

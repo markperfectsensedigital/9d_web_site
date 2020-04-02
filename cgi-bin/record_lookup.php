@@ -9,7 +9,7 @@ error_log ( "ENDED POST" );*/
 $firstname =  $_POST['firstname'];
 $lastname =  $_POST['lastname'];
 $housenumber =  $_POST['housenumber'];
-$city = $_POST['city'];
+$birthyear =  $_POST['birthyear'];
 
 $mysqli = new mysqli('localhost', 'readonly', '1V3sXh#5PW', 'voter_registrations');
 if ($mysqli->connect_errno) {
@@ -18,8 +18,8 @@ if ($mysqli->connect_errno) {
 
 $response = '';
 
-$query_string = "SELECT VID,LastName,MiddleName,FirstName,Suffix,HouseNumber,HouseSuffix,StreetPreDirection,StreetName,StreetType,StreetPostDirection,UnitType,UnitNumber,ResidentialCity, ResidentialZip,BirthYear FROM voter_registrations WHERE (LastName LIKE '$lastname%') AND (FirstName LIKE '$firstname%')  ORDER BY LastName,FirstName LIMIT 5";
-//error_log($query_string,0);
+$query_string = "SELECT VID,LastName,MiddleName,FirstName,Suffix,HouseNumber,HouseSuffix,StreetPreDirection,StreetName,StreetType,StreetPostDirection,UnitType,UnitNumber,ResidentialCity, ResidentialZip,BirthYear FROM voter_registrations WHERE (LastName LIKE '$lastname%') AND (FirstName LIKE '$firstname%')  AND (HouseNumber LIKE '$housenumber%') AND (BirthYear LIKE '$birthyear%') ORDER BY LastName,FirstName,BirthYear LIMIT 5";
+error_log($query_string,0);
 $result = $mysqli->query($query_string);
 
 while($row = $result->fetch_array()) {
@@ -41,7 +41,7 @@ foreach($rows as $row) {
     '</td> <td>' . 
     $row['BirthYear'] .
     ' </td>' . 
-    '<td><input type="tel"/></td>' .
+    "<td><input class=\"circ_phone\" type=\"tel\" id=\"circulator_$row_number\" name=\"circulator_$row_number\" disabled /></td>" .
     '</tr>';
 
     $row_number++;
