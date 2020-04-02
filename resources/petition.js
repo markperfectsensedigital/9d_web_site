@@ -13,8 +13,10 @@ function assignEvents() {
 
 function newlookup(e) {
     e = e || window.event;
-    if (((e.keyCode >= 48) && (e.keyCode <= 90)) || 
-    ((e.keyCode >= 96) && (e.keyCode <= 104))) {
+    if (((e.keyCode >= 48) && (e.keyCode <= 90)) ||  /* alphanum */
+    ((e.keyCode >= 96) && (e.keyCode <= 104)) || /* keypad */
+    (e.keyCode == 8) || (e.keyCode == 46) /* backspace and delete */
+    ) {
         var fields = [
             document.getElementById('lastname'),
             document.getElementById('firstname'),
