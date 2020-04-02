@@ -34,14 +34,14 @@ foreach($rows as $row) {
     $voter_id = $row['VID'];
 
     $response .= "<tr> <td><input type=\"checkbox\" id=\"vid_$row_number\" name=\"vid_$row_number\" value=\"$voter_id\"/></td>" . 
-    "<td><input type=\"radio\" id=\"vid_$row_number\" name=\"circulator\" value=\"$voter_id\"/></td><td>" . 
+    "<td><input type=\"radio\" id=\"vid_$row_number\" name=\"circulator\" value=\"$voter_id\"  onclick=\"showHideCirculator(this)\"/></td><td>" . 
     $full_name . 
     '</td> <td>' . 
     $full_address  .
     '</td> <td>' . 
     $row['BirthYear'] .
     ' </td>' . 
-    "<td><input class=\"circ_phone\" type=\"tel\" id=\"circulator_$row_number\" name=\"circulator_$row_number\" disabled /></td>" .
+    "<td><input class=\"circ_phone\" type=\"tel\" id=\"circulator_$row_number\" name=\"circulator_$row_number\" disabled/></td>" .
     '</tr>';
 
     $row_number++;

@@ -69,3 +69,15 @@ function printforms(e) {
     xhttp.send(parameters);
 
 }
+
+function showHideCirculator (e) {
+    var rowID = e.id.substring(e.id.indexOf("_") + 1)
+    var enabledCirculatorPhone = 'circulator_' + rowID
+    var circulatorPhones = document.getElementsByTagName('input')
+    for (var i=0; i<circulatorPhones.length; i++) {
+        if (circulatorPhones[i].id.startsWith('circulator')) {
+            circulatorPhones[i].disabled = (circulatorPhones[i].id != enabledCirculatorPhone) 
+        }
+    }
+
+}
