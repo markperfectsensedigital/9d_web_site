@@ -119,7 +119,7 @@ function printforms(e) {
     var parameters = pairs.join('&')
     parameters += '&circulatorID=' + document.querySelector('input[name="circulator"]:checked').value
     parameters += '&circulatorPhoneNumber=' + document.getElementById('circulator_phone_number').value
-    alert(parameters)
+  //  alert(parameters)
     var xhttp = new XMLHttpRequest()
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4) {

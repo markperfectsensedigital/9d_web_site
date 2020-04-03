@@ -10,7 +10,7 @@ require('fpdm.php');
 $voter_ids = array();
 
 foreach($_POST as $key => $value) {
-    error_log("$key, $value", 0);
+//    error_log("$key, $value", 0);
      if (substr( $key, 0, 11 ) === "vidCheckbox") {
       array_push($voter_ids, $value);
 }
@@ -29,7 +29,7 @@ if ($mysqli->connect_errno) {
 $response = '';
 
 $query_string = "SELECT VID,LastName,MiddleName,FirstName,Suffix,HouseNumber,HouseSuffix,StreetPreDirection,StreetName,StreetType,StreetPostDirection,UnitType,UnitNumber,ResidentialCity, ResidentialZip,BirthYear FROM voter_registrations WHERE (VID IN ($voter_id_clause)) LIMIT 5";
-error_log($query_string,0);
+//error_log($query_string,0);
 $result = $mysqli->query($query_string);
 
 while($row = $result->fetch_array()) {
@@ -62,7 +62,7 @@ foreach($rows as $row) {
 
 
 $query_string = "SELECT VID,LastName,MiddleName,FirstName,Suffix,HouseNumber,HouseSuffix,StreetPreDirection,StreetName,StreetType,StreetPostDirection,UnitType,UnitNumber,ResidentialCity, ResidentialZip FROM voter_registrations WHERE (VID = $circulator_id) LIMIT 1";
-error_log($query_string,0);
+//error_log($query_string,0);
 $result = $mysqli->query($query_string);
 $row = $result->fetch_array();
 $circulator_line_1 =  $row['FirstName'] . ' ' . $row['MiddleName'] . ' ' . $row['LastName'] . ' ' . $row['Suffix'] . $row['HouseNumber'] . ' ' . $row['HouseSuffix'] . ' ' . $row['StreetPreDirection'] . ' ' . $row['StreetName'] . ' ' . $row['StreetType'] . ' ' . $row['UnitType'] . ' ' . $row['UnitNumber'];
@@ -76,11 +76,12 @@ $fields["circulator_name_street"] = $circulator_line_1;
 $fields["circulator_city_state_zip"] = $circulator_line_2;
 $fields["circulator_phone"]  =  $circulator_phone;
 
-error_log(json_encode($fields),0);
+//error_log(json_encode($fields),0);
+$filename = time();
 $pdf = new FPDM('petition_form_letter.pdf');
 $pdf->Load($fields, false); // second parameter: false if field values are in ISO-8859-1, true if UTF-8
 $pdf->Merge();
-$pdf->Output('F','../downloaded_forms/barfofilename2.pdf');
+$pdf->Output('F',"../downloaded_forms/$filename.pdf");
 
 echo('All done');
 
