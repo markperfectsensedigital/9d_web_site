@@ -1,15 +1,16 @@
 <?php
 
-/*error_log ( "HERE WE ARE" );
+error_log ( "HERE WE ARE" );
 foreach($_POST as $key => $value)
 {
-   error_log($key, $value);
+   error_log("$key => $value");
 }
-error_log ( "ENDED POST" );*/
+error_log ( "ENDED POST" );
 $firstname =  $_POST['firstname'];
 $lastname =  $_POST['lastname'];
 $housenumber =  $_POST['housenumber'];
 $birthyear =  $_POST['birthyear'];
+$number_available_rows = $_POST['numberAvailableRows'];
 
 $mysqli = new mysqli('localhost', 'readonly', '1V3sXh#5PW', 'voter_registrations');
 if ($mysqli->connect_errno) {
@@ -18,7 +19,7 @@ if ($mysqli->connect_errno) {
 
 $response = '';
 
-$query_string = "SELECT VID,LastName,MiddleName,FirstName,Suffix,HouseNumber,HouseSuffix,StreetPreDirection,StreetName,StreetType,StreetPostDirection,UnitType,UnitNumber,ResidentialCity, ResidentialZip,BirthYear FROM voter_registrations WHERE (LastName LIKE '$lastname%') AND (FirstName LIKE '$firstname%')  AND (HouseNumber LIKE '$housenumber%') AND (BirthYear LIKE '$birthyear%') ORDER BY LastName,FirstName,BirthYear LIMIT 5";
+$query_string = "SELECT VID,LastName,MiddleName,FirstName,Suffix,HouseNumber,HouseSuffix,StreetPreDirection,StreetName,StreetType,StreetPostDirection,UnitType,UnitNumber,ResidentialCity, ResidentialZip,BirthYear FROM voter_registrations WHERE (LastName LIKE '$lastname%') AND (FirstName LIKE '$firstname%')  AND (HouseNumber LIKE '$housenumber%') AND (BirthYear LIKE '$birthyear%') ORDER BY LastName,FirstName,BirthYear LIMIT $number_available_rows";
 error_log($query_string,0);
 $result = $mysqli->query($query_string);
 
@@ -27,9 +28,17 @@ while($row = $result->fetch_array()) {
 }
 
 $row_number = 0;
+$list = array();
 foreach($rows as $row) {
 
-    $full_name = $row['FirstName'] . ' ' . $row['MiddleName'] . ' ' . $row['LastName'] . ' ' . $row['Suffix'];
+    $voter_record = array(
+        'voterid' => $row['VID'],
+        'fullName' => $row['FirstName'] . ' ' . $row['MiddleName'] . ' ' . $row['LastName'] . ' ' . $row['Suffix'], 
+        'fullAddress' => $row['HouseNumber'] . ' ' . $row['HouseSuffix'] . ' ' . $row['StreetPreDirection'] . ' ' . $row['StreetName'] . ' ' . $row['StreetType'] . ' ' . $row['UnitType'] . ' ' . $row['UnitNumber'] . ' ' . $row['ResidentialCity'] . ' ' . $row['ResidentialZip'],
+        'birthYear' => $row['BirthYear']);
+    array_push($list,$voter_record);
+
+ /*   $full_name = $row['FirstName'] . ' ' . $row['MiddleName'] . ' ' . $row['LastName'] . ' ' . $row['Suffix'];
     $full_address = $row['HouseNumber'] . ' ' . $row['HouseSuffix'] . ' ' . $row['StreetPreDirection'] . ' ' . $row['StreetName'] . ' ' . $row['StreetType'] . ' ' . $row['UnitType'] . ' ' . $row['UnitNumber'] . ' ' . $row['ResidentialCity'] . ' ' . $row['ResidentialZip'];
     $voter_id = $row['VID'];
 
@@ -44,17 +53,16 @@ foreach($rows as $row) {
     "<td><input class=\"circ_phone\" type=\"tel\" id=\"circulator_$row_number\" name=\"circulator_$row_number\" disabled/></td>" .
     '</tr>';
 
-    $row_number++;
+    $row_number++; */
 }
-$response .= '<tr>
+header('Content-type: application/json');
+echo json_encode( $list );
+/*$response .= '<tr>
 <td colspan="4">
  <button type="button" class="btn btn-warning"  onclick="printforms();">Submit</button>
 
 </td>
-</tr>';
-
-echo($response);
-
+</tr>';*/
 $mysqli->close(); 
 
 

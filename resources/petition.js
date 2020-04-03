@@ -14,9 +14,12 @@ function assignEvents() {
 function newlookup(e) {
     e = e || window.event;
     if (((e.keyCode >= 48) && (e.keyCode <= 90)) ||  /* alphanum */
-    ((e.keyCode >= 96) && (e.keyCode <= 104)) || /* keypad */
-    (e.keyCode == 8) || (e.keyCode == 46) /* backspace and delete */
+        ((e.keyCode >= 96) && (e.keyCode <= 104)) || /* keypad */
+        (e.keyCode == 8) || (e.keyCode == 46) /* backspace and delete */
     ) {
+        var numberAvailableRows = getNumberAvailableRows();
+      //  alert("number rows checked " + numberAvailableRows)
+
         var fields = [
             document.getElementById('lastname'),
             document.getElementById('firstname'),
@@ -25,24 +28,66 @@ function newlookup(e) {
         ]
         var pairs = []
         for (i = 0; i < fields.length; i++) {
-            pairs[i]=fields[i].id + '=' + fields[i].value
+            pairs[i] = fields[i].id + '=' + fields[i].value
         }
         var parameters = pairs.join('&')
-  
+        parameters += '&numberAvailableRows=' + numberAvailableRows
 
-
-       var xhttp = new XMLHttpRequest()
+        var xhttp = new XMLHttpRequest()
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4) {
                 if (this.status == 200) {
-                    document.getElementById('retrieved_records').innerHTML = this.responseText
+                 //   alert(this.responseText)
+                    var tbody= document.getElementById("retrieved_records")
+                    var voters = JSON.parse(this.responseText);
+                    for (var i = 0; i < voters.length; i++) {
+                      var newRow = document.createElement("tr")
+                      var checkCell = document.createElement("td")
+                      var checkInput = document.createElement("input")
+                      checkInput.type = "checkbox"
+                      checkInput.name = "vid_" + i
+                      checkInput.id = "vid_" + i
+                      checkInput.value = voters[i].voterid
+                      checkCell.append(checkInput)
+
+                      var radioCell = document.createElement("td")
+                      var radioInput = document.createElement("input")
+                      radioInput.type = "radio"
+                      radioInput.name = "circulator"
+                      radioInput.id = "vid_" + i
+                      radioInput.value = voters[i].voterid
+                      radioCell.append(radioInput)
+
+                      var nameCell = document.createElement("td")
+                      nameCell.innerText = voters[i].fullName
+
+                      var addressCell = document.createElement("td")
+                      addressCell.innerText = voters[i].fullAddress
+
+                      var birthyearCell = document.createElement("td")
+                      birthyearCell.innerText = voters[i].birthYear
+
+                      /* Empty the table of current rows */
+                      while (tbody.firstChild) {
+                        tbody.removeChild(tbody.lastChild);
+                      }
+                      
+                      newRow.append(checkCell)
+                      newRow.append(radioCell)
+                      newRow.append(nameCell)
+                      newRow.append(addressCell)
+                      newRow.append(birthyearCell)
+
+                      tbody.append(newRow)
+                    
+                    }
                 }
             }
         };
         xhttp.open("POST", "cgi-bin/record_lookup.php", true);
-       xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+        xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
         xhttp.send(parameters);
-       }
+    }
 }
 
 function printforms(e) {
@@ -52,7 +97,7 @@ function printforms(e) {
     var pairs = []
     for (i = 0; i < vidBoxes.length; i++) {
         if (vidBoxes[i].id.startsWith('vid') && vidBoxes[i].checked) {
-            pairs[paramIndex]=vidBoxes[i].id + '=' + vidBoxes[i].value
+            pairs[paramIndex] = vidBoxes[i].id + '=' + vidBoxes[i].value
             paramIndex++
         }
     }
@@ -67,19 +112,31 @@ function printforms(e) {
         }
     };
     xhttp.open("POST", "cgi-bin/print_form.php", true);
-   xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+    xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
     xhttp.send(parameters);
 
 }
 
-function showHideCirculator (e) {
+function showHideCirculator(e) {
     var rowID = e.id.substring(e.id.indexOf("_") + 1)
     var enabledCirculatorPhone = 'circulator_' + rowID
     var circulatorPhones = document.getElementsByTagName('input')
-    for (var i=0; i<circulatorPhones.length; i++) {
+    for (var i = 0; i < circulatorPhones.length; i++) {
         if (circulatorPhones[i].id.startsWith('circulator')) {
-            circulatorPhones[i].disabled = (circulatorPhones[i].id != enabledCirculatorPhone) 
+            circulatorPhones[i].disabled = (circulatorPhones[i].id != enabledCirculatorPhone)
         }
     }
 
+
+}
+
+function getNumberAvailableRows() {
+    var numberCheckedRows = 0
+    var vidBoxes = document.getElementsByTagName('input')
+    for (i = 0; i < vidBoxes.length; i++) {
+        if (vidBoxes[i].id.startsWith('vid') && vidBoxes[i].checked) {
+            numberCheckedRows++
+        }
+    }
+    return (5 - numberCheckedRows)
 }

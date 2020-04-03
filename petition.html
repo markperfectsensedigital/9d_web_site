@@ -18,6 +18,8 @@
   <div class="m-4">
     <h2>Sign the petition</h2>
     <p>Use this form to download a petition with your name filled in.</p>
+    <form>
+
     <table>
       <tbody>
         <tr>
@@ -31,27 +33,30 @@
           <td><input type="text" id="firstname" name="firstname" /></td>
           <td><input type="text" id="housenumber" name="housenumber" /></td>
           <td><input type="text" id="birthyear" name="birthyear" /></td>
+          
         </tr>
       </tbody>
     </table>
-    <form>
 
-    </form>
-    <form>
       <div id="retrieval">
 
         <table id="results_table" class="table">
           <thead>
-              <td>Print</td>
+            <tr>
+              <td>Include</td>
               <td>Circulator</td>
               <td>First, Middle, Last Name</td>
               <td>Address</td>
               <td>Birth Year</td>
-              <td>Phone (for circulator only)</td>
             </tr>
           </thead>
           <tbody id="retrieved_records">
-
+            <tr>
+              <td colspan="5">
+               <button type="button" class="btn btn-warning"  onclick="printforms();">Submit</button>
+              
+              </td>
+              </tr>
         </tbody></table>
       </div>
     </form>
