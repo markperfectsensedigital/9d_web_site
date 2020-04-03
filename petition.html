@@ -57,13 +57,51 @@
               
               </td>
               </tr> -->
-        </tbody></table>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4">
+             <button type="button" class="btn btn-warning"  onclick="printforms();">Submit</button>
+            
+            </td>
+            </tr>
+        </tfoot>
+      </table>
       </div>
     </form>
   </div> <!-- class="m-4" -->
   <footer id="footer" class="page-footer py-2 container-fluid"></footer>
+  
+  <div id="circulatorModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>Circulator's phone number</h3>
+      <p>The circulator's phone number appears in the lower-left corner of the petition. See the sample.</p>
+      <form>
+        <table>
+          <tr>
+            <td>Circulator's phone number:&nbsp;</td>
+            <td><input type="tel" id="circulator_phone_number" name="circulator_phone_number" /></td>
+          </tr>
+          <tr>
+          <td colspan="2">
+            <button type="button" class="btn btn-warning" id="circulator_modal_close">Continue</button>
+           
+           </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  
+  </div>
+  
   <script>insertHeader();</script>
   <script>assignEvents();</script>
+
+
+
 </body>
 
 </html>

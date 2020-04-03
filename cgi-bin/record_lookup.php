@@ -1,11 +1,11 @@
 <?php
 
-error_log ( "HERE WE ARE" );
+/*error_log ( "HERE WE ARE" );
 foreach($_POST as $key => $value)
 {
    error_log("$key => $value");
 }
-error_log ( "ENDED POST" );
+error_log ( "ENDED POST" );*/
 $firstname =  $_POST['firstname'];
 $lastname =  $_POST['lastname'];
 $housenumber =  $_POST['housenumber'];
@@ -37,37 +37,12 @@ foreach($rows as $row) {
         'fullAddress' => $row['HouseNumber'] . ' ' . $row['HouseSuffix'] . ' ' . $row['StreetPreDirection'] . ' ' . $row['StreetName'] . ' ' . $row['StreetType'] . ' ' . $row['UnitType'] . ' ' . $row['UnitNumber'] . ' ' . $row['ResidentialCity'] . ' ' . $row['ResidentialZip'],
         'birthYear' => $row['BirthYear']);
     array_push($list,$voter_record);
-
- /*   $full_name = $row['FirstName'] . ' ' . $row['MiddleName'] . ' ' . $row['LastName'] . ' ' . $row['Suffix'];
-    $full_address = $row['HouseNumber'] . ' ' . $row['HouseSuffix'] . ' ' . $row['StreetPreDirection'] . ' ' . $row['StreetName'] . ' ' . $row['StreetType'] . ' ' . $row['UnitType'] . ' ' . $row['UnitNumber'] . ' ' . $row['ResidentialCity'] . ' ' . $row['ResidentialZip'];
-    $voter_id = $row['VID'];
-
-    $response .= "<tr> <td><input type=\"checkbox\" id=\"vid_$row_number\" name=\"vid_$row_number\" value=\"$voter_id\"/></td>" . 
-    "<td><input type=\"radio\" id=\"vid_$row_number\" name=\"circulator\" value=\"$voter_id\"  onclick=\"showHideCirculator(this)\"/></td><td>" . 
-    $full_name . 
-    '</td> <td>' . 
-    $full_address  .
-    '</td> <td>' . 
-    $row['BirthYear'] .
-    ' </td>' . 
-    "<td><input class=\"circ_phone\" type=\"tel\" id=\"circulator_$row_number\" name=\"circulator_$row_number\" disabled/></td>" .
-    '</tr>';
-
-    $row_number++; */
+ 
 }
 header('Content-type: application/json');
 echo json_encode( $list );
-/*$response .= '<tr>
-<td colspan="4">
- <button type="button" class="btn btn-warning"  onclick="printforms();">Submit</button>
 
-</td>
-</tr>';*/
 $mysqli->close(); 
-
-
-
-
 
 
 

@@ -59,8 +59,8 @@ function newlookup(e) {
                         var checkCell = document.createElement("td")
                         var checkInput = document.createElement("input")
                         checkInput.type = "checkbox"
-                        checkInput.name = "vid_" + i
-                        checkInput.id = "vid_" + i
+                        checkInput.name = "vidCheckbox_" + i
+                        checkInput.id = "vidCheckbox_" + i
                         checkInput.value = voters[i].voterid
                         checkCell.append(checkInput)
 
@@ -68,8 +68,9 @@ function newlookup(e) {
                         var radioInput = document.createElement("input")
                         radioInput.type = "radio"
                         radioInput.name = "circulator"
-                        radioInput.id = "vid_" + i
+                        radioInput.id = "vidRadio_" + i
                         radioInput.value = voters[i].voterid
+                        radioInput.onclick = showHideCirculator
                         radioCell.append(radioInput)
 
                         var nameCell = document.createElement("td")
@@ -92,6 +93,9 @@ function newlookup(e) {
                         tbody.append(newRow)
 
                     }
+
+                    var resultsTable = document.getElementById('results_table')
+                    resultsTable.style.display = "block"
                 }
             }
         };
@@ -107,12 +111,14 @@ function printforms(e) {
     var vidBoxes = document.getElementsByTagName('input')
     var pairs = []
     for (i = 0; i < vidBoxes.length; i++) {
-        if (vidBoxes[i].id.startsWith('vid') && vidBoxes[i].checked) {
+        if (vidBoxes[i].id.startsWith('vidCheckbox_') && vidBoxes[i].checked) {
             pairs[paramIndex] = vidBoxes[i].id + '=' + vidBoxes[i].value
             paramIndex++
         }
     }
     var parameters = pairs.join('&')
+    parameters += '&circulatorID=' + document.querySelector('input[name="circulator"]:checked').value
+    parameters += '&circulatorPhoneNumber=' + document.getElementById('circulator_phone_number').value
     alert(parameters)
     var xhttp = new XMLHttpRequest()
     xhttp.onreadystatechange = function () {
@@ -129,23 +135,37 @@ function printforms(e) {
 }
 
 function showHideCirculator(e) {
-    var rowID = e.id.substring(e.id.indexOf("_") + 1)
-    var enabledCirculatorPhone = 'circulator_' + rowID
-    var circulatorPhones = document.getElementsByTagName('input')
-    for (var i = 0; i < circulatorPhones.length; i++) {
-        if (circulatorPhones[i].id.startsWith('circulator')) {
-            circulatorPhones[i].disabled = (circulatorPhones[i].id != enabledCirculatorPhone)
+
+
+    var modal = document.getElementById("circulatorModal");
+    var span = document.getElementsByClassName("close")[0];
+    var circulatorField = document.getElementById('circulator_phone_number')
+    circulatorField.value = ''
+    modal.style.display = "block";
+    circulatorField.focus()
+    span.onclick = function() {
+        modal.style.display = "none";
+      }
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
         }
-    }
-
-
+      } 
+      
+      var closeButton = document.getElementById("circulator_modal_close")
+      closeButton.onclick =  function() {
+        modal.style.display = "none";
+      }
+     
 }
+
+
 
 function getNumberAvailableRows() {
     var numberCheckedRows = 0
     var vidBoxes = document.getElementsByTagName('input')
     for (i = 0; i < vidBoxes.length; i++) {
-        if (vidBoxes[i].id.startsWith('vid') && vidBoxes[i].checked) {
+        if (vidBoxes[i].id.startsWith('vidCheckbox_') && vidBoxes[i].checked) {
             numberCheckedRows++
         }
     }
