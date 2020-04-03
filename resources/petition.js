@@ -18,7 +18,7 @@ function newlookup(e) {
         (e.keyCode == 8) || (e.keyCode == 46) /* backspace and delete */
     ) {
         var numberAvailableRows = getNumberAvailableRows();
-      //  alert("number rows checked " + numberAvailableRows)
+        //  alert("number rows checked " + numberAvailableRows)
 
         var fields = [
             document.getElementById('lastname'),
@@ -37,49 +37,60 @@ function newlookup(e) {
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4) {
                 if (this.status == 200) {
-                 //   alert(this.responseText)
-                    var tbody= document.getElementById("retrieved_records")
+                    //   alert(this.responseText)
+                    var tbody = document.getElementById("retrieved_records")
+                    /* Empty the table of unchecked rows */
+
+                    if (tbody.childElementCount > 0) {
+                        var child = tbody.firstElementChild
+                        do {
+                            nextChild = child.nextElementSibling
+                            var voterCheckBox = child.getElementsByTagName('input')[0];
+                            if (!voterCheckBox.checked) {
+                                tbody.removeChild(child)
+                            }
+                            child = nextChild
+                        } while (child !== null)
+                    }
+
                     var voters = JSON.parse(this.responseText);
                     for (var i = 0; i < voters.length; i++) {
-                      var newRow = document.createElement("tr")
-                      var checkCell = document.createElement("td")
-                      var checkInput = document.createElement("input")
-                      checkInput.type = "checkbox"
-                      checkInput.name = "vid_" + i
-                      checkInput.id = "vid_" + i
-                      checkInput.value = voters[i].voterid
-                      checkCell.append(checkInput)
+                        var newRow = document.createElement("tr")
+                        var checkCell = document.createElement("td")
+                        var checkInput = document.createElement("input")
+                        checkInput.type = "checkbox"
+                        checkInput.name = "vid_" + i
+                        checkInput.id = "vid_" + i
+                        checkInput.value = voters[i].voterid
+                        checkCell.append(checkInput)
 
-                      var radioCell = document.createElement("td")
-                      var radioInput = document.createElement("input")
-                      radioInput.type = "radio"
-                      radioInput.name = "circulator"
-                      radioInput.id = "vid_" + i
-                      radioInput.value = voters[i].voterid
-                      radioCell.append(radioInput)
+                        var radioCell = document.createElement("td")
+                        var radioInput = document.createElement("input")
+                        radioInput.type = "radio"
+                        radioInput.name = "circulator"
+                        radioInput.id = "vid_" + i
+                        radioInput.value = voters[i].voterid
+                        radioCell.append(radioInput)
 
-                      var nameCell = document.createElement("td")
-                      nameCell.innerText = voters[i].fullName
+                        var nameCell = document.createElement("td")
+                        nameCell.innerText = voters[i].fullName
 
-                      var addressCell = document.createElement("td")
-                      addressCell.innerText = voters[i].fullAddress
+                        var addressCell = document.createElement("td")
+                        addressCell.innerText = voters[i].fullAddress
 
-                      var birthyearCell = document.createElement("td")
-                      birthyearCell.innerText = voters[i].birthYear
+                        var birthyearCell = document.createElement("td")
+                        birthyearCell.innerText = voters[i].birthYear
 
-                      /* Empty the table of current rows */
-                      while (tbody.firstChild) {
-                        tbody.removeChild(tbody.lastChild);
-                      }
-                      
-                      newRow.append(checkCell)
-                      newRow.append(radioCell)
-                      newRow.append(nameCell)
-                      newRow.append(addressCell)
-                      newRow.append(birthyearCell)
 
-                      tbody.append(newRow)
-                    
+
+                        newRow.append(checkCell)
+                        newRow.append(radioCell)
+                        newRow.append(nameCell)
+                        newRow.append(addressCell)
+                        newRow.append(birthyearCell)
+
+                        tbody.append(newRow)
+
                     }
                 }
             }
