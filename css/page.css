@@ -96,8 +96,10 @@ table#results_table {
   .whatsthis {
       color: #a7a7a7;
       font-size: 70%;
+      vertical-align:middle; 
+      padding-bottom: 1em;
   }
 
-  span#closemessage, span#circulator_explain {
+  span#closemessage, .whatsthis {
       cursor: pointer;
   }

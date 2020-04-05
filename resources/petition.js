@@ -1,11 +1,13 @@
 function assignEvents() {
 
-    document.getElementById('circulator_explain').onclick = circulatorExplain
+   var whatsthis = document.getElementsByClassName('whatsthis');
+    for (var i=0; i< whatsthis.length; i++ ) {
+        whatsthis[i].onclick = circulatorExplain
+    }
     document.getElementById('searchbutton').onclick = newlookup
 }
 
 function circulatorExplain() {
-    alert('omg')
     document.getElementById('title').innerText = 'Circulator'
     var explanation = document.createElement('p')
     explanation.innerText = "The circulator is the person presenting the petition. The circulator's name, address, and phone number appear at the bottom of the petitition. You must select at least one signer to be the circulator."
