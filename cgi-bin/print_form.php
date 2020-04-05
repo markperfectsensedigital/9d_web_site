@@ -76,24 +76,17 @@ $fields["circulator_name_street"] = $circulator_line_1;
 $fields["circulator_city_state_zip"] = $circulator_line_2;
 $fields["circulator_phone"]  =  $circulator_phone;
 
-//error_log(json_encode($fields),0);
-$filename = time();
-$pdf = new FPDM('petition_form_letter.pdf');
-$pdf->Load($fields, false); // second parameter: false if field values are in ISO-8859-1, true if UTF-8
-$pdf->Merge();
-$pdf->Output('F',"../downloaded_forms/$filename.pdf");
-
-echo('All done');
-
 $mysqli->close(); 
 
 
+//error_log(json_encode($fields),0);
+$filename = time();
+$filename = $filename .'.pdf';
+$pdf = new FPDM('petition_form_letter.pdf');
+$pdf->Load($fields, false); // second parameter: false if field values are in ISO-8859-1, true if UTF-8
+$pdf->Merge();
+$pdf->Output('F',"../downloaded_forms/$filename");
 
-
-
-
-
-
-
+echo("/downloaded_forms/$filename");
 
 ?>

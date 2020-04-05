@@ -125,6 +125,13 @@ function printforms(e) {
         if (this.readyState == 4) {
             if (this.status == 200) {
                 alert(this.responseText)
+                var downloadLink = document.createElement('a')
+                var linkText = document.createTextNode("Your petition is ready.");
+                downloadLink.href = this.responseText
+                downloadLink.download="petition_form.pdf"
+                downloadLink.appendChild(linkText);
+                document.body.appendChild(downloadLink)
+
             }
         }
     };
