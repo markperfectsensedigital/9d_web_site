@@ -143,8 +143,47 @@ function printforms(e) {
 
 function showHideCirculator(e) {
 
+    document.getElementById("title").value = 'Circulator\'s phone number'
+    var line1 = document.createElement('p')
+    line1.textContent = 'The circulator\'s phone number appears in the lower-left corner of the petition. See the sample.'
+    var circulatorTable = document.createElement('table')
+    var circulatorTableRow = document.createElement('tr')
+    var circulatorTableCell = document.createElement('td')
+    circulatorTableCell.innerText = 'Circulator\'s phone number\xa0'
+    circulatorTableRow.appendChild(circulatorTableCell)
 
-    var modal = document.getElementById("circulatorModal");
+    circulatorPhoneInput = document.createElement('input')
+    circulatorPhoneInput.type = 'tel'
+    circulatorPhoneInput.id = 'circulator_phone_number'
+    circulatorPhoneInput.name = 'circulator_phone_number'
+
+    circulatorTableCell = document.createElement('td')
+    circulatorTableCell.appendChild(circulatorPhoneInput)
+    circulatorTableRow.appendChild(circulatorTableCell)
+
+    circulatorTable.appendChild(circulatorTableRow)
+
+
+    circulatorTableRow = document.createElement('tr')
+    circulatorTableCell = document.createElement('td')
+    circulatorTableCell.colSpan = 2
+    circulatorButton = document.createElement('button')
+    circulatorButton.className = 'btn btn-warning'
+    circulatorButton.id = 'circulator_modal_close'
+    circulatorButton.onclick =  function() {
+        modal.style.display = "none";
+      }
+    circulatorButton.textContent='Continue'
+    circulatorTableCell.appendChild(circulatorButton)
+    circulatorTableRow.appendChild(circulatorTableCell)
+    circulatorTableRow.appendChild(circulatorTableCell)
+    circulatorTable.appendChild(circulatorTableRow)
+
+    var messageBody = document.getElementById('message')
+    messageBody.appendChild(line1)
+    messageBody.appendChild(circulatorTable)
+
+    var modal = document.getElementById("message_box")
     var span = document.getElementsByClassName("close")[0];
     var circulatorField = document.getElementById('circulator_phone_number')
     circulatorField.value = ''
@@ -159,11 +198,7 @@ function showHideCirculator(e) {
         }
       } 
       
-      var closeButton = document.getElementById("circulator_modal_close")
-      closeButton.onclick =  function() {
-        modal.style.display = "none";
-      }
-     
+
 }
 
 

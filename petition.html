@@ -20,23 +20,23 @@
     <p>Use this form to download a petition with your name filled in.</p>
     <form>
 
-    <table>
-      <tbody>
-        <tr>
-          <td>Last name</td>
-          <td>First name</td>
-          <td>House Number</td>
-          <td>Birth Year</td>
-        </tr>
-        <tr>
-          <td><input type="text" id="lastname" name="lastname" /></td>
-          <td><input type="text" id="firstname" name="firstname" /></td>
-          <td><input type="text" id="housenumber" name="housenumber" /></td>
-          <td><input type="text" id="birthyear" name="birthyear" /></td>
-          
-        </tr>
-      </tbody>
-    </table>
+      <table>
+        <tbody>
+          <tr>
+            <td>Last name</td>
+            <td>First name</td>
+            <td>House Number</td>
+            <td>Birth Year</td>
+          </tr>
+          <tr>
+            <td><input type="text" id="lastname" name="lastname" /></td>
+            <td><input type="text" id="firstname" name="firstname" /></td>
+            <td><input type="text" id="housenumber" name="housenumber" /></td>
+            <td><input type="text" id="birthyear" name="birthyear" /></td>
+
+          </tr>
+        </tbody>
+      </table>
 
       <div id="retrieval">
 
@@ -57,46 +57,48 @@
               
               </td>
               </tr> -->
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="4">
-             <button type="button" class="btn btn-warning"  onclick="printforms();">Submit</button>
-            
-            </td>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="5">
+                <button type="button" class="btn btn-warning" onclick="printforms();">Submit</button>
+
+              </td>
             </tr>
-        </tfoot>
-      </table>
+          </tfoot>
+        </table>
       </div>
     </form>
   </div> <!-- class="m-4" -->
   <footer id="footer" class="page-footer py-2 container-fluid"></footer>
-  
-  <div id="circulatorModal" class="modal">
+
+  <div id="message_box" class="modal">
 
     <!-- Modal content -->
     <div class="modal-content">
       <span class="close">&times;</span>
-      <h3>Circulator's phone number</h3>
-      <p>The circulator's phone number appears in the lower-left corner of the petition. See the sample.</p>
-      <form>
+      <h3 id="title">Circulator's phone number</h3>
+      <div id="message">
+        <!--p>The circulator's phone number appears in the lower-left corner of the petition. See the sample.</p>
+
         <table>
           <tr>
             <td>Circulator's phone number:&nbsp;</td>
             <td><input type="tel" id="circulator_phone_number" name="circulator_phone_number" /></td>
           </tr>
           <tr>
-          <td colspan="2">
-            <button type="button" class="btn btn-warning" id="circulator_modal_close">Continue</button>
-           
-           </td>
+            <td colspan="2">
+              <button type="button" class="btn btn-warning" id="circulator_modal_close">Continue</button>
+
+            </td>
           </tr>
         </table>
-      </form>
+
+      </div> -->
     </div>
-  
+
   </div>
-  
+
   <script>insertHeader();</script>
   <script>assignEvents();</script>
 
