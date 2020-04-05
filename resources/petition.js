@@ -9,6 +9,34 @@ function assignEvents() {
     for (i = 0; i < fields.length; i++) {
         fields[i].onkeyup = newlookup
     }
+
+    document.getElementById('circulator_explain').onclick = circulatorExplain;
+}
+
+function circulatorExplain() {
+    alert('omg')
+    document.getElementById('title').innerText = 'Circulator'
+    var explanation = document.createElement('p')
+    explanation.innerText = "The circulator is the person presenting the petition. The circulator's name, address, and phone number appear at the bottom of the petitition. You must select at least one signer to be the circulator."
+
+    var circulatorExample = document.createElement('img')
+    circulatorExample.src = '/resources/circulator_example.png'
+    circulatorExample.style.width = '100%'
+    var messageBody = document.getElementById('message')
+    removeAllChildren(messageBody)
+    messageBody.appendChild(explanation)
+    messageBody.appendChild(circulatorExample)
+
+    var modal = document.getElementById("message_box")
+    var span = document.getElementsByClassName("close")[0];
+    modal.style.display = "block";
+    span.onclick = hideMessage
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      } 
+
 }
 
 function newlookup(e) {
@@ -125,12 +153,28 @@ function printforms(e) {
         if (this.readyState == 4) {
             if (this.status == 200) {
                 alert(this.responseText)
+
+                var messageBody = document.getElementById('message')
+                removeAllChildren(messageBody)
+
+                document.getElementById('title').innerText = 'Petition ready'
                 var downloadLink = document.createElement('a')
-                var linkText = document.createTextNode("Your petition is ready.");
+                var linkText = document.createTextNode("Click here to download your petition.");
                 downloadLink.href = this.responseText
-                downloadLink.download="petition_form.pdf"
+                downloadLink.download="nine_districts_petition_form.pdf"
                 downloadLink.appendChild(linkText);
-                document.body.appendChild(downloadLink)
+
+                messageBody.appendChild(downloadLink)
+
+                var modal = document.getElementById("message_box")
+                var span = document.getElementsByClassName("close")[0];
+                modal.style.display = "block";
+                span.onclick = hideMessage
+                  window.onclick = function(event) {
+                    if (event.target == modal) {
+                      modal.style.display = "none";
+                    }
+                  } 
 
             }
         }
@@ -143,9 +187,13 @@ function printforms(e) {
 
 function showHideCirculator(e) {
 
-    document.getElementById("title").value = 'Circulator\'s phone number'
+    document.getElementById('title').innerText = 'Circulator\'s phone number'
+    
+    var messageBody = document.getElementById('message')
+    removeAllChildren(messageBody)
+
     var line1 = document.createElement('p')
-    line1.textContent = 'The circulator\'s phone number appears in the lower-left corner of the petition. See the sample.'
+    line1.textContent = 'The circulator\'s phone number appears in the lower-left corner of the petition.'
     var circulatorTable = document.createElement('table')
     var circulatorTableRow = document.createElement('tr')
     var circulatorTableCell = document.createElement('td')
@@ -179,7 +227,7 @@ function showHideCirculator(e) {
     circulatorTableRow.appendChild(circulatorTableCell)
     circulatorTable.appendChild(circulatorTableRow)
 
-    var messageBody = document.getElementById('message')
+    
     messageBody.appendChild(line1)
     messageBody.appendChild(circulatorTable)
 
@@ -189,9 +237,7 @@ function showHideCirculator(e) {
     circulatorField.value = ''
     modal.style.display = "block";
     circulatorField.focus()
-    span.onclick = function() {
-        modal.style.display = "none";
-      }
+    span.onclick = hideMessage
       window.onclick = function(event) {
         if (event.target == modal) {
           modal.style.display = "none";
@@ -213,3 +259,14 @@ function getNumberAvailableRows() {
     }
     return (5 - numberCheckedRows)
 }
+
+function removeAllChildren(n) {
+    while (n.lastElementChild) {
+        n.removeChild(n.lastElementChild);
+      }
+}
+
+function hideMessage () {
+    var modal = document.getElementById("message_box")
+    modal.style.display = "none";
+  } 

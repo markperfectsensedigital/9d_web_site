@@ -93,3 +93,11 @@ table#results_table {
     width: 80%; /* Could be more or less, depending on screen size */
   }
 
+  .whatsthis {
+      color: #a7a7a7;
+      font-size: 70%;
+  }
+
+  span#closemessage, span#circulator_explain {
+      cursor: pointer;
+  }

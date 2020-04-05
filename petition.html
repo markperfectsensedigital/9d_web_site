@@ -17,7 +17,16 @@
   <div id="header"></div>
   <div class="m-4" id="body">
     <h2>Sign the petition</h2>
-    <p>Use this form to download a petition with your name filled in.</p>
+    <p>Use this form to download a petition with your name filled in.
+      <ol>
+        <li>Search for your name using the fields below.</li>
+        <li>Mark the checkbox to include the name in the petition.</li>
+        <li>Select one of the names to be the circulator.</li>
+        <li>Click <b>Submit</b> to download and print the completed petition.</li>
+        <li>Each voter signs the petition, and the circulator signs at the bottom.</li>
+        <li>Mail the completed peititon to Nine Districts for Montgomery County, P. O. Box XXX, Glen Echo, MD 2XXXX.</li>
+      </ol>
+    </p>
     <form>
 
       <table>
@@ -44,7 +53,7 @@
           <thead>
             <tr>
               <td>Include</td>
-              <td>Circulator</td>
+              <td>Circulator <span id="circulator_explain" class="whatsthis">[?]</span></td>
               <td>First, Middle, Last Name</td>
               <td>Address</td>
               <td>Birth Year</td>
@@ -76,25 +85,9 @@
 
     <!-- Modal content -->
     <div class="modal-content">
-      <span class="close">&times;</span>
+      <span id="closemessage" class="close">&times;</span>
       <h3 id="title">Circulator's phone number</h3>
       <div id="message">
-        <!--p>The circulator's phone number appears in the lower-left corner of the petition. See the sample.</p>
-
-        <table>
-          <tr>
-            <td>Circulator's phone number:&nbsp;</td>
-            <td><input type="tel" id="circulator_phone_number" name="circulator_phone_number" /></td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <button type="button" class="btn btn-warning" id="circulator_modal_close">Continue</button>
-
-            </td>
-          </tr>
-        </table>
-
-      </div> -->
     </div>
 
   </div>
