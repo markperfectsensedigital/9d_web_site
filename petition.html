@@ -19,12 +19,12 @@
     <h2>Sign the petition</h2>
     <p>Use this form to download a petition with your name filled in.
       <ol>
-        <li>Search for your name using the fields below.</li>
+        <li>Search for your voter registration using the fields below. Use the name and address where last registered to vote, which may be different from your current name or address.</li>
         <li>Mark the checkbox to include the name in the petition.</li>
         <li>Select one of the names to be the circulator.</li>
         <li>Click <b>Submit</b> to download and print the completed petition.</li>
         <li>Each voter signs the petition, and the circulator signs at the bottom.</li>
-        <li>Mail the completed peititon to Nine Districts for Montgomery County, P. O. Box XXX, Glen Echo, MD 2XXXX.</li>
+        <li>Mail the completed petition to Nine Districts for Montgomery County, P. O. Box 437, Glen Echo, MD 20812.</li>
       </ol>
     </p>
     <form>
@@ -42,6 +42,7 @@
             <td><input type="text" id="firstname" name="firstname" /></td>
             <td><input type="text" id="housenumber" name="housenumber" /></td>
             <td><input type="text" id="birthyear" name="birthyear" /></td>
+            <td rowspan="2"><button type="button" id="searchbutton" class="btn btn-warning">Search</button></td>
 
           </tr>
         </tbody>
@@ -60,17 +61,12 @@
             </tr>
           </thead>
           <tbody id="retrieved_records">
-            <!-- <tr>
-              <td colspan="5">
-               <button type="button" class="btn btn-warning"  onclick="printforms();">Submit</button>
-              
-              </td>
-              </tr> -->
+          
           </tbody>
           <tfoot>
             <tr>
               <td colspan="5">
-                <button type="button" class="btn btn-warning" onclick="printforms();">Submit</button>
+                <button type="button" class="btn btn-warning" onclick="printforms();">Print</button>
 
               </td>
             </tr>
