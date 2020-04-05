@@ -18,8 +18,17 @@ if ($mysqli->connect_errno) {
 }
 
 $response = '';
+$where_clause = "WHERE (LastName = '$lastname') AND (FirstName = '$firstname') AND (BirthYear = '$birthyear')";
 
-$query_string = "SELECT VID,LastName,MiddleName,FirstName,Suffix,HouseNumber,HouseSuffix,StreetPreDirection,StreetName,StreetType,StreetPostDirection,UnitType,UnitNumber,ResidentialCity, ResidentialZip,BirthYear FROM voter_registrations WHERE (LastName LIKE '$lastname%') AND (FirstName LIKE '$firstname%')  AND (HouseNumber LIKE '$housenumber%') AND (BirthYear LIKE '$birthyear%') ORDER BY LastName,FirstName,BirthYear LIMIT $number_available_rows";
+error_log($where_clause,0);
+
+if ($housenumber != '' ) {
+    $where_clause .= " AND (HouseNumber = '$housenumber')";
+}
+
+error_log($where_clause,0);
+
+$query_string = "SELECT VID,LastName,MiddleName,FirstName,Suffix,HouseNumber,HouseSuffix,StreetPreDirection,StreetName,StreetType,StreetPostDirection,UnitType,UnitNumber,ResidentialCity, ResidentialZip,BirthYear FROM voter_registrations " . $where_clause . " ORDER BY LastName,FirstName,BirthYear LIMIT $number_available_rows";
 error_log($query_string,0);
 $result = $mysqli->query($query_string);
 

@@ -17,14 +17,14 @@
   <div id="header"></div>
   <div class="m-4" id="body">
     <h2>Sign the petition</h2>
-    <p>Use this form to download a petition with your name filled in.
+    <p>Use this form to download a petition with your name filled in (<a href="/images/petition_diagram.jpg" target="_new">sample</a>).
       <ol>
         <li>Search for your voter registration using the fields below. Use the name and address where last registered to vote, which may be different from your current name or address.</li>
         <li>Mark the checkbox to include the name in the petition.</li>
-        <li>Select one of the names to be the circulator.</li>
+        <li>Select one of the names to be the circulator<span class="whatsthis">[?]</span>.</li>
         <li>Click <b>Submit</b> to download and print the completed petition.</li>
-        <li>Each voter signs the petition, and the circulator signs at the bottom.</li>
-        <li>Mail the completed petition to Nine Districts for Montgomery County, P. O. Box 437, Glen Echo, MD 20812.</li>
+        <li>Each voter signs and dates the petition, and the circulator signs and dates at the bottom.</li>
+        <li>Mail the completed petition to Nine Districts for Montgomery County, PO Box 437, Glen Echo, MD 20812-0437.</li>
       </ol>
     </p>
     <form>
@@ -32,16 +32,16 @@
       <table>
         <tbody>
           <tr>
-            <td>Last name</td>
-            <td>First name</td>
+            <td>Last name*</td>
+            <td>First name*</td>
+            <td>Birth Year*</td>
             <td>House Number</td>
-            <td>Birth Year</td>
           </tr>
           <tr>
-            <td><input type="text" id="lastname" name="lastname" /></td>
-            <td><input type="text" id="firstname" name="firstname" /></td>
+            <td><input type="text" id="lastname" name="lastname" required /></td>
+            <td><input type="text" id="firstname" name="firstname" required /></td>
+            <td><input type="text" id="birthyear" name="birthyear" required /></td>
             <td><input type="text" id="housenumber" name="housenumber" /></td>
-            <td><input type="text" id="birthyear" name="birthyear" /></td>
             <td rowspan="2"><button type="button" id="searchbutton" class="btn btn-warning">Search</button></td>
 
           </tr>
@@ -54,7 +54,7 @@
           <thead>
             <tr>
               <td>Include</td>
-              <td>Circulator <span id="circulator_explain" class="whatsthis">[?]</span></td>
+              <td>Circulator <span class="whatsthis">[?]</span></td>
               <td>First, Middle, Last Name</td>
               <td>Address</td>
               <td>Birth Year</td>

@@ -35,13 +35,23 @@ function circulatorExplain() {
 function newlookup(e) {
     var numberAvailableRows = getNumberAvailableRows()
     //  alert("number rows checked " + numberAvailableRows)
+  
 
     var fields = [
         document.getElementById('lastname'),
         document.getElementById('firstname'),
-        document.getElementById('housenumber'),
-        document.getElementById('birthyear')
+        document.getElementById('birthyear'),
+        document.getElementById('housenumber')
+
     ]
+
+    if ((fields[0].value == '') ||
+    (fields[1].value == '') || 
+    (fields[2].value == '') ) {
+        alert('Last name, first name, and birth year are requried.')
+        return
+    }
+
     var pairs = []
     for (i = 0; i < fields.length; i++) {
         pairs[i] = fields[i].id + '=' + fields[i].value
