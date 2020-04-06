@@ -7,6 +7,20 @@ function assignEvents() {
     document.getElementById('searchbutton').onclick = newlookup
 }
 
+
+function getAlreadyCheckedVoters() {
+    var checkedVoterRecords = [];
+    var allCheckBoxes = document.getElementsByTagName('input')
+
+    for (var i = 0; i< allCheckBoxes.length; i++ ) {
+        if ((allCheckBoxes[i].id.startsWith('vidCheckbox')) && 
+        ('value' in allCheckBoxes[i])) {
+            checkedVoterRecords.push(allCheckBoxes[i].value)
+        } 
+    }
+    return checkedVoterRecords
+}
+
 function circulatorExplain() {
     document.getElementById('title').innerText = 'Circulator'
     var explanation = document.createElement('p')
@@ -42,7 +56,6 @@ function newlookup(e) {
         document.getElementById('firstname'),
         document.getElementById('birthyear'),
         document.getElementById('housenumber')
-
     ]
 
     if ((fields[0].value == '') ||
@@ -80,7 +93,12 @@ function newlookup(e) {
                 }
 
                 var voters = JSON.parse(this.responseText);
+                var alreadyCheckedVoters = getAlreadyCheckedVoters()
+
                 for (var i = 0; i < voters.length; i++) {
+                    if (alreadyCheckedVoters.includes(voters[i].id)) {
+                        continue
+                    }
                     var newRow = document.createElement("tr")
                     var checkCell = document.createElement("td")
                     var checkInput = document.createElement("input")
